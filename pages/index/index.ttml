@@ -1,1 +1,6 @@
-<web-view src="https://aibazi.scaperow.com"></web-view>
+<div  tt:if="{{!isLoaded}}" class="container">
+  <image src="./logo_hero.png"  mode="aspectFit"></image>
+  <div style="text-align: center; width: 100%; color:#6c6c6c">正在加载数据</div>
+  </div>
+  <web-view  class="{{isLoaded?"show":"hide"}}"   bindload="bindload" style="flex: 1; width: 100vw; height: 100vh;" src="{{h5PageUrl}}"></web-view>
+  
