@@ -2,13 +2,27 @@ const app = getApp()
 
 Page({
   data: {
-    h5PageUrl: decodeURIComponent('https://aibazi.scaperow.com'),
-    isLoaded: false
+    reviewing: false
   },
-  bindload(res:any) {
-    this.setData({
-      isLoaded: true
-    })
-  }
-});
 
+  onLoad() {
+    const app = getApp();
+    app.getPromise()
+      .then((result: boolean) => {
+        if (result) {
+          this.setData({ reviewing: true })
+        } else {
+          this.redirect();
+        }
+      });
+
+  },
+
+  redirect() {
+    tt.navigateTo({
+      url: '/pages/main/main', // 这里填写要跳转到的页面路径
+    });
+  },
+
+
+});
